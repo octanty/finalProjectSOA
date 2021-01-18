@@ -1,0 +1,28 @@
+add openapi
+
+./mvnw quarkus:add-extension -Dextensions="quarkus-smallrye-openapi"
+
+run quarkus
+mvn quarkus: dev
+./mvnw compile quarkus:dev
+windows without ./
+
+add smallrye instead of JAX-RS Application in resource>application.properties
+
+add
+mp.openapi.scan.disable=true in application.properties
+for using static method
+to only serve static OpenAPI
+mp.openapi.extensions.smallrye.openapi=3.0.2
+auto generation operationId
+mp.openapi.extensions.smallrye.operationIdStrategy=METHOD
+
+/*
+if you wanna run in production add 
+quarkus.swagger-ui.always-include=true
+in application.properties
+
+if you wanna run api in browser
+http://localhost:8080/my-custom-path
+
+
